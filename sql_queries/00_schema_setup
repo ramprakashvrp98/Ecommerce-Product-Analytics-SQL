@@ -1,0 +1,109 @@
+-- Create Database
+create database ecom;
+use ecom;
+
+-- EVENTS TABLE
+CREATE TABLE events (
+    event_id INT,
+    timestamp DATETIME,
+    customer_id INT,
+    session_id INT,
+    event_type VARCHAR(50),
+    product_id INT,
+    device_type VARCHAR(20),
+    traffic_source VARCHAR(50),
+    campaign_id INT,
+    page_category VARCHAR(20),
+    session_duration_sec DECIMAL(10,2),
+    experiment_group VARCHAR(20)
+);
+
+SET GLOBAL local_infile = 1; 
+
+LOAD DATA LOCAL INFILE 'C:/Users/rprekash/Downloads/RAM/SQL/MYSQL/PROJECT ECOM/events.csv'
+INTO TABLE events
+FIELDS TERMINATED BY ','
+IGNORE 1 ROWS;
+
+select * from events;
+
+
+-- PRODUCTS TABLE
+create table products(
+product_id int primary key,
+category varchar(50),
+brand varchar(50),
+base_price decimal(5,2),
+launch_date date,
+is_premium boolean);
+
+LOAD DATA LOCAL INFILE 'C:/Users/rprekash/Downloads/RAM/SQL/MYSQL/PROJECT ECOM/products.csv'
+INTO TABLE products
+FIELDS TERMINATED BY ','
+IGNORE 1 ROWS;
+
+select * from products;
+
+
+-- TRANSACTIONS TABLE
+create table transactions(
+transaction_id int,
+timestamp datetime,
+customer_id int,
+product_id int,
+quantity int,
+discount_applied decimal(5,2),
+gross_revenue decimal (5,2),
+campaign_id int,
+refund_flag boolean);
+
+LOAD DATA LOCAL INFILE 'C:/Users/rprekash/Downloads/RAM/SQL/MYSQL/PROJECT ECOM/transactions.csv'
+INTO TABLE transactions
+FIELDS TERMINATED BY ','
+IGNORE 1 ROWS;
+
+select * from transactions;
+
+
+-- CAMPAIGNS TABLE
+create table campaigns(
+campaign_id int,
+channel varchar(50),
+objective varchar(50),
+start_date date,
+end_date date,
+target_segment varchar(50),
+expected_uplift decimal(5,3));
+
+LOAD DATA LOCAL INFILE 'C:/Users/rprekash/Downloads/RAM/SQL/MYSQL/PROJECT ECOM/campaigns.csv'
+INTO TABLE campaigns
+FIELDS TERMINATED BY ','
+IGNORE 1 ROWS;
+
+select * from campaigns;
+
+
+-- CUSTOMERS TABLE
+create table customers(
+customer_id int,
+signup_date date,
+country varchar(10),
+age int,
+gender varchar(10),
+loyalty_tier varchar(20),
+acquisition_channel varchar(20));
+
+LOAD DATA LOCAL INFILE 'C:/Users/rprekash/Downloads/RAM/SQL/MYSQL/PROJECT ECOM/customers.csv'
+INTO TABLE customers
+FIELDS TERMINATED BY ','
+IGNORE 1 ROWS;
+
+select * from customers;
+
+
+
+select * from events;
+select * from campaigns;
+select * from products;
+select * from customers;
+select * from transactions;
