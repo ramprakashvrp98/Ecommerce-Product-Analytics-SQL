@@ -97,8 +97,14 @@ Execute files inside /sql_queries folder
 📁 Project Structure
 
 ecommerce-analytics-sql-project/
-│
-├── dataset/
 ├── sql_queries/
 ├── insights/
 └── README.md
+
+
+📁 Dataset
+
+Due to GitHub file size limits, datasets are not included in this repository.
+
+You can download them here:
+👉 https://www.kaggle.com/datasets/geethasagarbonthu/marketing-and-e-commerce-analytics-dataset
